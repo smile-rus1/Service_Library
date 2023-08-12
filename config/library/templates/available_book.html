@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Доступные книги {% endblock %}
+
+{% block content %}
+<div class="form-container">
+  <form method="post">
+     {% csrf_token %}
+    {% if message %}
+  <div class="error-message">
+      {{ message }}
+  </div>
+    {% endif %}
+
+    <label for="first_name">Введите код книги, которую хотите взять:</label>
+    <input type="text" name="book">
+    <br>
+    <button type="submit" class="submit-button">Взять книгу</button>
+      <a class="link" href="{% url 'index' %}">Завершить работу</a>
+  </form>
+</div>
+
+<h1>Список доступных книг</h1>
+<ul>
+    {% for book in books %}
+    <li>
+        <p>{{ book.title }} --- Код книги ({{ book.bookstorage.id }})</p>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

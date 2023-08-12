@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Страница читателя {% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Добро пожаловать {{ reader.surname }} {{ reader.name }}</h1>
+    <p>Ваши книги</p>
+    {% for book in books %}
+    <p>{{ book.book.title }} --- код книги({{ book.book.id}})</p>
+    {% endfor %}
+
+    <a href="{% url 'available_book' reader.id %}" class="link">Посмотреть список доступных книг</a>
+    <a href="{% url 'return_book' reader.id %}" class="link">Сдать книгу</a>
+</div>
+{% endblock %}

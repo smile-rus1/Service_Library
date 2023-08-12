@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Вход читателя {% endblock %}
+
+{% block content %}
+
+<div class="form-container">
+  <form method="post">
+    {% csrf_token %}
+    <select class="dropdown-list" name="selected_surname">
+      {% for surname in surnames %}
+      <option value="{{surname}}">{{ surname }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <button type="submit" class="submit-button">Войти в систему</button>
+  </form>
+  <a href="{% url 'register' %}" class="link">Еще не зарегистрировались?</a>
+</div>
+
+{% endblock %}

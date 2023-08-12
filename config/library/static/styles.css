@@ -1,0 +1,59 @@
+.error-message {
+    color: #ff0000;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.form-container {
+    text-align: center;
+    padding: 20px;
+  }
+
+.dropdown-list {
+    margin-bottom: 10px;
+  }
+
+.submit-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+.link {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #555;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"] {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  .submit-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .submit-button:hover {
+    background-color: #2980b9;
+  }

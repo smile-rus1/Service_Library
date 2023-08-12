@@ -1,0 +1,62 @@
+def reader_login(request):
+    if request.method == 'POST':
+        last_name = request.POST['last_name']
+        try:
+            reader = Reader.objects.get(last_name=last_name)
+            return redirect('choose_action', reader_id=reader.id)
+        except Reader.DoesNotExist:
+            return redirect('add_reader')
+    return render(request, 'login.html')
+
+
+def add_reader(request):
+    if request.method == 'POST':
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        patronymic = request.POST.get('patronymic', '')
+        reader = Reader.objects.create(name=first_name, surname=last_name, last_name=patronymic)
+        return redirect('choose_action', reader_id=reader.id)
+    return render(request, 'add_reader.html')
+
+
+def choose_action(request, reader_id):
+    reader = Reader.objects.get(id=reader_id)
+    return render(request, 'choose_action.html', {'reader': reader})
+
+
+def view_available_books(request, reader_id):
+    books = Book.objects.filter(librarybook__is_available=True)
+    return render(request, 'available_books.html', {'books': books})
+
+
+def borrow_book(request, reader_id, book_id):
+    reader = Reader.objects.get(id=reader_id)
+    book = Book.objects.get(id=book_id)
+    loan = BookLoan.objects.create(reader=reader, book=book)
+    book.librarybook.is_available = False
+    book.librarybook.save()
+    return redirect('choose_action', reader_id=reader.id)
+
+
+def return_book(request, reader_id):
+    if request.method == 'POST':
+        book_code = request.POST['book_code']
+        try:
+            loan = BookLoan.objects.get(book__librarybook__book_code=book_code, reader_id=reader_id, date_returned__isnull=True)
+            loan.book.librarybook.is_available = True
+            loan.book.librarybook.save()
+            loan.date_returned = datetime.date.today()
+            loan.save()
+            return redirect('choose_action', reader_id=reader_id)
+        except BookLoan.DoesNotExist:
+            return render(request, 'return_book.html', {'reader_id': reader_id, 'error_message': 'Book not found or already returned'})
+    return render(request, 'return_book.html', {'reader_id': reader_id})
+
+
+
+path('', views.reader_login, name='login'),
+    path('add_reader/', views.add_reader, name='add_reader'),
+    path('choose_action/<int:reader_id>/', views.choose_action, name='choose_action'),
+    path('view_available_books/<int:reader_id>/', views.view_available_books, name='view_available_books'),
+    path('borrow_book/<int:reader_id>/<int:book_id>/', views.borrow_book, name='borrow_book'),
+    path('return_book/<int:reader_id>/', views.return_book, name='return_book'),

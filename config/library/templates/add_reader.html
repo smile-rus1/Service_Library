@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <label for="first_name">Имя:</label>
+    <input type="text" name="first_name" required>
+    <label for="last_name" >Фамилия:</label>
+    <input type="text" name="last_name" required>
+    <label for="patronymic">Отчество:</label>
+    <input type="text" name="patronymic">
+    <button type="submit">Добавить читателя</button>
+</form>
+</body>
+</html>

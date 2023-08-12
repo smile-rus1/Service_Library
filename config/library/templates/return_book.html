@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} Возвращение книги {% endblock %}
+
+
+{% block content %}
+<div class="form-container">
+  <form method="post">
+     {% csrf_token %}
+    {% if message %}
+  <div class="error-message">
+      {{ message }}
+  </div>
+    {% endif %}
+
+    <label for="first_name">Введите код книги, которую сдать:</label>
+    <input type="text" name="book" required>
+    <br>
+    <button type="submit" class="submit-button">Сдать книгу</button>
+  </form>
+</div>
+{% endblock %}
