@@ -29,7 +29,7 @@ __git clone https://github.com/smile-rus1/Service_Library.git__
 * py manage.py runserver
 ---
 ###### После перейдите по ip 127.0.0.1:8000
-#
+
 [^1]: Для того чтобы добавлять книги в БД нужно войти в админ панель по url
 ---
 http://127.0.0.1:8000/admin/
