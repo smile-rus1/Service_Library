@@ -8,7 +8,7 @@
 ### Для клонирования с репозитория
 __git clone https://github.com/smile-rus1/Service_Library.git__
 ---
-### Для работы с системой:
+### Установка:
 Создайте виртуальное окружение
 ---
 py -m venv env
@@ -21,3 +21,11 @@ env\Scripts\activate
 ---
 pip install -r requirements.txt
 ---
+### Работа с системой
+Для запуска проекта в корне проекта пропишите
+---
+env\Scripts\activate
+cd config
+py manage.py runserver
+---
+### После перейдите по ip 127.0.0.1:8000
