@@ -28,4 +28,6 @@ __git clone https://github.com/smile-rus1/Service_Library.git__
 * cd config
 * py manage.py runserver
 ---
-### После перейдите по ip 127.0.0.1:8000
+###### После перейдите по ip 127.0.0.1:8000
+#
+[^1] Для 
