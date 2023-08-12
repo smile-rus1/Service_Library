@@ -9,18 +9,18 @@
 __git clone https://github.com/smile-rus1/Service_Library.git__
 ---
 ### Установка:
-Создайте виртуальное окружение
----
-py -m venv env
----
-Далее активируйте его
----
-env\Scripts\activate
----
-После установите все зависимости:
----
-pip install -r requirements.txt
----
+ * Создайте виртуальное окружение
+  ---
+  py -m venv env
+  ---
+* Далее активируйте его
+  ---
+  env\Scripts\activate
+  ---
+* После установите все зависимости:
+  ---
+  pip install -r requirements.txt
+  ---
 ### Работа с системой
 Для запуска проекта в корне проекта пропишите
 ---
