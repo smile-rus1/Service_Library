@@ -24,8 +24,8 @@ __git clone https://github.com/smile-rus1/Service_Library.git__
 ### Работа с системой
 Для запуска проекта в корне проекта пропишите
 ---
-env\Scripts\activate
-cd config
-py manage.py runserver
+* env\Scripts\activate
+* cd config
+* py manage.py runserver
 ---
 ### После перейдите по ip 127.0.0.1:8000
